@@ -4,6 +4,43 @@ table {
 }
 
 td, th {
-    border: 1px solid black;
+    border: 1px solid transparent;
     padding: 5px 10px;
+}
+
+.coffee_selector{
+    width: 50%;
+    float: right;
+    margin: auto;
+}
+.coffee_chart{
+    width: 50%;
+    float: left;
+}
+form{
+    text-align: center;
+}
+#roast-selection{
+   margin: auto;
+    height: 30px;
+    width: 205px;
+
+}
+#search{
+    height: 30px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+.coffeename{
+    font-size: 32px;
+    text-align: right;
+    width: 80%;
+    height: 45px;
+}
+.coffeeroast{
+    color: gray;
+    width: 20%;
+    padding-bottom: 0px;
+    padding-left: 0px;
 }

@@ -6,28 +6,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+
     <h1>Coffee!</h1>
 
-    <form>
-        <label for="roast-selection"></label>
-        <select id="roast-selection">
-            <option>light</option>
-            <option>medium</option>
-            <option>dark</option>
-        </select>
-        <input id="submit" type="submit" />
-    </form>
+    <hr>
 
+    <div class="coffee_selector">
+        <form>
+            <label for="roast-selection">Roast</label>
+            <select id="roast-selection" onchange="updateCoffees();Search_Coffee()" >
+                <option>light</option>
+                <option>medium</option>
+                <option>dark</option>
+                <option selected>all</option>
+            </select>
+            <br>
+            <label for="search">Name</label>
+            <input id="search" placeholder="Search Coffee Here" type="text" oninput="Search_Coffee()">
+        </form>
+    </div>
+    <div class="coffee_search">
+
+    </div>
+
+
+
+    <div class="coffee_chart">
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>ROAST</th>
+
             </tr>
         </thead>
         <tbody id="coffees"></tbody>
     </table>
+    </div>
+
 
     <script src="main.js"></script>
 </body>
