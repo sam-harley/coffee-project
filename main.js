@@ -5,7 +5,6 @@ function log() {
 
 }
 
-
 function renderCoffee(coffee) {
     var html = '<tr class="coffee">';
     // html += '<td>' + coffee.id + '</td>';
@@ -59,7 +58,50 @@ function Search_Coffee(e) {
 
 
 
-
+function addCoffee(e) {
+    e.preventDefault();
+    var newCoffee = document.getElementById("add-coffee").value;
+    var selectedRoast = document.querySelector('#new-roast-selection').value;
+    var element;
+    function findmedium() {
+        for (var i = 0 ; i < coffees.length; i++){
+            if (coffees[i].id === 4){
+                console.log(i);
+                element = i;
+            }
+        }}
+    function finddark() {
+        for (var i = 0 ; i < coffees.length; i++){
+            if (coffees[i].id === 7){
+                console.log(i);
+                element = i;
+            }
+        }}
+    if (newCoffee === "") {
+        alert("Please input a coffee name!");
+        }else if(selectedRoast === "light") {
+        coffees.unshift({
+            id: coffees.length + 1,
+            name: newCoffee,
+            roast: selectedRoast
+        });
+    } else if(selectedRoast === "medium"){
+            findmedium();
+        coffees.splice(element,0,{
+            id: coffees.length + 1,
+            name: newCoffee,
+            roast: selectedRoast
+        });
+    }else if(selectedRoast === "dark"){
+        finddark();
+        coffees.splice(element,0,{
+            id: coffees.length + 1,
+            name: newCoffee,
+            roast: selectedRoast
+        });}
+    updateCoffees();
+    Search_Coffee();
+}
 
 
 
@@ -89,6 +131,7 @@ var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 var searched = document.getElementById("search");
 tbody.innerHTML = renderCoffees(coffees);
+submitButton    .addEventListener('click', addCoffee);
 //
 // roastSelection.addEventListener("onchange", updateCoffees);
  function getvalueofname(searchingfor) {
@@ -101,3 +144,4 @@ tbody.innerHTML = renderCoffees(coffees);
      }
  }
  updateCoffees();
+
