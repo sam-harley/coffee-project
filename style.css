@@ -2,7 +2,11 @@ table {
     border-collapse: collapse;
     margin: 15px 0;
 }
-
+h1{
+}
+body{
+    background-color: #ad7c54;
+}
 td, th {
     border: 1px solid transparent;
     padding: 5px 10px;
@@ -39,7 +43,7 @@ form{
     height: 45px;
 }
 .coffeeroast{
-    color: gray;
+    color: lightgoldenrodyellow;
     width: 20%;
     padding-bottom: 0px;
     padding-left: 0px;
