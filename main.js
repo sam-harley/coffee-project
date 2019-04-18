@@ -40,17 +40,48 @@ function addCoffee(e) {
     e.preventDefault();
     var newCoffee = document.getElementById("add-coffee").value;
     var selectedRoast = document.querySelector('#new-roast-selection').value;
+    var element;
+    function findmedium() {
+        for (var i = 0 ; i < coffees.length; i++){
+            if (coffees[i].id === 4){
+                console.log(i);
+                element = i;
+            }
+        }}
+    function finddark() {
+        for (var i = 0 ; i < coffees.length; i++){
+            if (coffees[i].id === 7){
+                console.log(i);
+                element = i;
+            }
+        }}
     if (newCoffee === "") {
-        alert("Please type a coffee name");
-    } else {
-        coffees.push({
+        alert("Please input a coffee name!");
+    }else if(selectedRoast === "light") {
+        coffees.unshift({
             id: coffees.length + 1,
             name: newCoffee,
             roast: selectedRoast
         });
-        updateCoffees();
-    }
+    } else if(selectedRoast === "medium"){
+        findmedium();
+        coffees.splice(element,0,{
+            id: coffees.length + 1,
+            name: newCoffee,
+            roast: selectedRoast
+        });
+    }else if(selectedRoast === "dark"){
+        finddark();
+        coffees.splice(element,0,{
+            id: coffees.length + 1,
+            name: newCoffee,
+            roast: selectedRoast
+        });}
+    updateCoffees();
+    Search_Coffee();
 }
+
+
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 var coffees = [
