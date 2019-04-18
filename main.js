@@ -2,7 +2,6 @@
 
 function log() {
     console.log(document.getElementById("search").value)
-
 }
 
 function renderCoffee(coffee) {
@@ -105,9 +104,6 @@ function addCoffee(e) {
 
 
 
-
-
-
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 var coffees = [
     {id: 1, name: 'Light City', roast: 'light'},
@@ -130,7 +126,7 @@ var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 var searched = document.getElementById("search");
-tbody.innerHTML = renderCoffees(coffees);
+
 submitButton    .addEventListener('click', addCoffee);
 //
 // roastSelection.addEventListener("onchange", updateCoffees);
@@ -143,5 +139,16 @@ submitButton    .addEventListener('click', addCoffee);
 
      }
  }
- updateCoffees();
 
+
+
+function savecoffee() {
+    localStorage.setItem('local_coffee', JSON.stringify(coffees));
+    console.log("Saved local storage");
+}
+
+function loadcoffee() {
+    coffees = JSON.parse(localStorage.getItem('local_coffee'));
+    tbody.innerHTML = renderCoffees(coffees);
+    console.log("Loaded local storage")
+}
