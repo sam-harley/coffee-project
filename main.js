@@ -76,3 +76,15 @@ var submitButton = document.querySelector('#submit');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', addCoffee);
+
+
+function savecoffee() {
+    localStorage.setItem('local_coffee', JSON.stringify(coffees));
+    console.log("Saved local storage");
+}
+
+function loadcoffee() {
+    coffees = JSON.parse(localStorage.getItem('local_coffee'));
+    tbody.innerHTML = renderCoffees(coffees);
+    console.log("Loaded local storage")
+}
