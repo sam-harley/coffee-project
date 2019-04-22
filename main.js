@@ -1,4 +1,13 @@
 "use strict";
+function loadcoffee() {
+    coffees = JSON.parse(localStorage.getItem('local_coffee'));
+    // tbody.innerHTML = renderCoffees(coffees);
+    console.log("Loaded local storage")
+}
+function savecoffee() {
+    localStorage.setItem('local_coffee', JSON.stringify(coffees));
+    console.log("Saved local storage");
+}
 
 function renderCoffee(coffee) {
 
@@ -27,10 +36,11 @@ function updateCoffees() {
         } else if (selectedRoast === "all") {
             filteredCoffees.push(coffee);
         }
+
     });
 
     var displayedCoffees = filteredCoffees.filter(function (coffee) {
-        return coffee.name.toLowerCase().includes(coffeeName);
+        return coffee.name.toLowerCase().includes(coffeeName.toLowerCase());
     });
 
     tbody.innerHTML = renderCoffees(displayedCoffees);
@@ -52,7 +62,7 @@ function addCoffee(e) {
         for (var i = 0 ; i < coffees.length; i++){
             if (coffees[i].id === 7){
                 console.log(i);
-                element = i;
+                return element = i;
             }
         }}
     if (newCoffee === "") {
@@ -63,22 +73,27 @@ function addCoffee(e) {
             name: newCoffee,
             roast: selectedRoast
         });
+        document.getElementById("add-coffee").value = "";
     } else if(selectedRoast === "medium"){
         findmedium();
         coffees.splice(element,0,{
             id: coffees.length + 1,
             name: newCoffee,
             roast: selectedRoast
+
         });
+        document.getElementById("add-coffee").value = "";
     }else if(selectedRoast === "dark"){
         finddark();
         coffees.splice(element,0,{
             id: coffees.length + 1,
             name: newCoffee,
             roast: selectedRoast
-        });}
+        });  document.getElementById("add-coffee").value = "";
+    }
     updateCoffees();
-    Search_Coffee();
+    savecoffee();
+
 }
 
 
@@ -108,14 +123,5 @@ tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', addCoffee);
 
-
-function savecoffee() {
-    localStorage.setItem('local_coffee', JSON.stringify(coffees));
-    console.log("Saved local storage");
-}
-
-function loadcoffee() {
-    coffees = JSON.parse(localStorage.getItem('local_coffee'));
-    tbody.innerHTML = renderCoffees(coffees);
-    console.log("Loaded local storage")
-}
+loadcoffee();
+updateCoffees();
